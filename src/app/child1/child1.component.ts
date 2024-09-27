@@ -37,6 +37,7 @@ export class Child1Component implements OnChanges {
 
     this.observable$.subscribe(() => {
       this.childTitle = 'another child title'
+      // this.changeDetectorRef.markForCheck(); // ay espes ete avelacnes arden kashxati async pipei  pes, nra takic el e sa kanchats
     }) // ay es depkum chi poxi anuny, menak poxum e async pipe-i depkum
   }
 

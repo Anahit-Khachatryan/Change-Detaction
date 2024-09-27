@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Child1Component } from "./child1/child1.component";
 
@@ -9,7 +9,7 @@ import { Child1Component } from "./child1/child1.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'change-detaction';
  
   user: {name: string} = {
@@ -36,6 +36,15 @@ export class AppComponent implements OnInit {
      }, 2_000)
   }
 
+  ngAfterViewChecked() {
+     console.log('chch')
+  }
+
+  getNumbers() {
+    return Math.random()  
+    // error kta kani vor poxvela,hamematuma elia poxvum - mi hat kanchuma vornkari mi hat el vor stugi tesnum e tarbera
+  }
+
 }
 
 //runtime js mej code e grats, vory vor poxum e native js-i liky baner harmaracnelov iren. Angular vor uzum e change detect ani,  
@@ -46,4 +55,10 @@ export class AppComponent implements OnInit {
 //   setTimeout(cb, timer)
 // } 
 //sa arel e
+
+
+// ngAfterContentInit - erb ng-contentov inch vor baner unenk, erb galis e en masy vor petka nsti galis e ngAfterContentInit
+//ngAfterContentCheck - ngAfterContentInit heto ashxatum e ngAfterContentCheck,  hamematum e inch bindingner stugel er ngAfterContentInit jamanak,
+//noric stugum e, nra hamara vor stugi tesni vor poxevec dranic heto eli popoxvec te che
+//ngAfterViewInit - sa erb view init e eghel, elementnery render en eghel
 
